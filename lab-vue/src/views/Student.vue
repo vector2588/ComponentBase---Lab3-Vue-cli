@@ -1,20 +1,19 @@
 <template>
-  <h1>Events For Good</h1>
   <div class="events">
-    <EventCard v-for="event in events" :key="event.id" :event="event" />
+    <StudentCard v-for="event in events" :key="event.id" :event="event" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import EventCard from "@/components/EventCard.vue"
+import StudentCard from "@/components/StudentCard.vue"
 
-import EventService from '@/services/EventService.js'
+import StudentService from '@/services/StudentService.js'
 // import axios from 'axios'
 export default {
-  name: "EventList",
+  name: "StudentList",
   components: {
-    EventCard, //register it as a child component
+    StudentCard, //register it as a child component
   },
   data() {
     return {
@@ -22,7 +21,7 @@ export default {
     }
   },
   created() {
-    EventService.getEvents()
+    StudentService.getEvents()
     .then((response) => {
       this.events = response.data
       })
